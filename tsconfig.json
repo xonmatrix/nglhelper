@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "nglhelper": [
+        "dist/nglhelper"
+      ],
+      "nglhelper/*": [
+        "dist/nglhelper/*"
+      ]
+    }
   }
 }

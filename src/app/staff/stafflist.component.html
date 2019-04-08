@@ -1,0 +1,47 @@
+<div fxLayout="column" class="page-content" style="min-height:0">
+    <div class="page-bar" fxFlex="0 0 auto">
+      <button mat-button class="btn-sm" routerLink="/staff/new" *ngIf="!readOnly">
+        <mat-icon>add</mat-icon> Add</button>
+      <button mat-button class="btn-sm" (click)="ds.Refresh()">
+        <mat-icon>refresh</mat-icon> Refresh</button>
+    </div>
+    <div fxFlex="0 0 auto" style="padding:20px;" fxLayout="row" fxLayoutAlign="start start">
+      <table-filter [FilterTypes]="filterTypes" [(filter)]="ds.tableFilter" #filter></table-filter>
+      <div style="margin-left:10px">
+        <button mat-raised-button class="btn-sm" (click)="ds.ApplyFilter()">
+          <mat-icon>search</mat-icon>Search</button>
+        <button mat-raised-button class="btn-sm" style="margin-left:5px;" (click)="ds.ClearFilter()">
+          <mat-icon>clear</mat-icon>Clear</button>
+      </div>
+    </div>
+    <div fxLayout="row" fxFlex="0 0 auto" fxLayoutAlign="start center" style="padding:0 20px 10px 20px">
+      <label style="font-size:13px">Staff Status :</label>
+      <mat-radio-group class="control" [(ngModel)]="ds.filter.IsActive" (change)="ds.ApplyFilter()" style="margin-left:10px;">
+        <mat-radio-button [value]="1">Active</mat-radio-button>
+        <mat-radio-button [value]="0">Inactive</mat-radio-button>
+        <mat-radio-button [value]="-1">All</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <kendo-grid fxFlex="grow" [rowClass]="rowStyle" [pageable]="{type:'input'}" [skip]="ds.OffSet" [pageSize]="ds.Limit" [data]="ds.Result|async"
+      (pageChange)="ds.PageChanged($event)" [loading]="ds.Loading$|async">
+      <kendo-grid-column field="Classification" title="Classification"></kendo-grid-column>
+      <kendo-grid-column field="PassNo" title="Pass No."></kendo-grid-column>
+      <kendo-grid-column field="Name" title="Name"></kendo-grid-column>
+      <kendo-grid-column field="Designation" title="Designation"></kendo-grid-column>
+      <kendo-grid-column field="Department" title="Department"></kendo-grid-column>
+      <kendo-grid-column field="Id" title="Action" width="170">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <button mat-icon-button routerLink="/staff/{{dataItem.Id}}/detail">
+            <mat-icon>mode_edit</mat-icon>
+          </button>
+          <!-- <button mat-icon-button routerLink="/staff/leave/list/{{dataItem.Id}}">
+            <mat-icon>list</mat-icon>
+          </button> -->
+          <button mat-icon-button color="warn" (click)="remove(dataItem)" *ngIf="!readOnly">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+  
