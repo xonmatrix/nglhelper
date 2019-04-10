@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ViewEncapsulation, Input, ChangeDetectionStrategy, OnInit, OnDestroy, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, Input, ChangeDetectionStrategy, OnInit, OnDestroy, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 import { Subject } from 'rxjs';
 import { HttpHelper } from '../http/httphelper';

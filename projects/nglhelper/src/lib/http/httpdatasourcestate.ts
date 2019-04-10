@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router, ActivationEnd, ResolveEnd } from "@angular/router";
 
 @Injectable({ providedIn: "root" })
-export class HttpDatasourceStateManager {
+export class HttpDatasourceManager {
   private objectState: any = {};
   private shouldReloadState = true;
   private loaded = false;
@@ -26,9 +26,23 @@ export class HttpDatasourceStateManager {
     });
   }
 
-  revertState() {
+  navigateWithFilter(dsName:string,url:string= null,filter:any={},tableFilter:any={}){
+    this.applyFilter(dsName,filter,tableFilter);
+    this.usePreviousState(url);
+  }
+
+  applyFilter(dsName:string,filter:any={},tableFilter:any={}){
+      let state = this.getState(dsName);
+      state.filter = {...filter};
+      state.tableFilter = {...tableFilter};
+      this.setState(dsName,state);
+  }
+
+  usePreviousState(url :string = null) {
     this.loadStateIndicator = true;
     this.shouldReloadState = true;
+    if(url)
+    this.router.navigateByUrl(url);
   }
 
   getState(dsName: string) {

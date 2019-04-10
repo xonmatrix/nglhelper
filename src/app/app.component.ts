@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { HttpDatasourceStateManager } from "projects/nglhelper/src/lib/http/httpdatasourcestate";
+import { HttpDatasourceManager, HttpHelper } from "nglhelper";
 import { Router } from "@angular/router";
 
 @Component({
@@ -7,10 +7,13 @@ import { Router } from "@angular/router";
   templateUrl: "./app.component.html"
 })
 export class AppComponent {
-  constructor(private xx: HttpDatasourceStateManager, private router: Router) {}
+  constructor(
+    private xx: HttpDatasourceManager,
+    private http: HttpHelper,
+    private router: Router
+  ) {}
 
-  go() {
-    this.xx.revertState();
-    this.router.navigateByUrl('/stafflist');
+  async go() {
+   var res = await this.http.Post('/api/test',{});
   }
 }

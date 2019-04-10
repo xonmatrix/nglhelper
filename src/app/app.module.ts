@@ -20,6 +20,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { StaffListComponent } from "./staff/stafflist.component";
 import { StaffFormComponent } from "./staff/staffform.component";
+import {HttpHelperModule} from 'nglhelper';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/stafflist" },
@@ -48,7 +49,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    DropDownsModule
+    DropDownsModule,
+    HttpHelperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

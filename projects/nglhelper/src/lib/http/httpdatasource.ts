@@ -1,7 +1,7 @@
 import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
-import { HttpHelper } from "./HttpHelper";
-import { HttpDatasourceStateManager } from "./httpdatasourcestate";
+import { HttpHelper } from "./httphelper";
+import { HttpDatasourceManager } from "./httpdatasourcestate";
 
 export class HttpDataSource {
   Result = new Observable<any>();
@@ -28,7 +28,7 @@ export class HttpDataSource {
 
   constructor(
     private http: HttpHelper,
-    private dsStateStorage: HttpDatasourceStateManager,
+    private dsManager: HttpDatasourceManager,
     private url: string,
     private options: IHttpDataSourceOptions = {}
   ) {
@@ -49,19 +49,20 @@ export class HttpDataSource {
     this.Loading$ = this.http.LoaderState(options.loader);
 
     let state = null;
-    console.log('should i load?');
-    console.log(this.dsStateStorage.ShouldReloadDsState);
+   
     if (
       options.presistState &&
       (options.presistStateMode == PresistStateMode.PresistAll ||
         (options.presistStateMode == PresistStateMode.PresistWhenIndicated &&
-          this.dsStateStorage.ShouldReloadDsState))
+          this.dsManager.ShouldReloadDsState))
     ) {
-      state = this.dsStateStorage.getState(options.presistState);
+      state = this.dsManager.getState(options.presistState);
+    
       if (state) {
         this.Limit = state.Limit;
         this.OffSet = state.Offset;
         this.Sort = state.Sort;
+        
         this._filter = state.filter;
         this.filter = this._filter;
         this._tableFilter = state.tableFilter;
@@ -115,7 +116,7 @@ export class HttpDataSource {
       filter: this._filter
     };
     if (this._tableFilter) state.tableFilter = this._tableFilter;
-    this.dsStateStorage.setState(this.options.presistState, state);
+    this.dsManager.setState(this.options.presistState, state);
   }
 
   SetUrl(url: string) {

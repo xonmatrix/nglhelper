@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { HttpHelper } from './HttpHelper';
+import { HttpHelper } from './httphelper';
 
 @Pipe({
     name: 'fetch',
@@ -8,7 +8,6 @@ import { HttpHelper } from './HttpHelper';
 export class FetchPipe implements PipeTransform {
 
     constructor(private http: HttpHelper) {
-        console.log('??');
     }
 
     transform(url: string): any {

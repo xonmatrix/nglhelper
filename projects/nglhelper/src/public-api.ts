@@ -3,6 +3,7 @@
  */
 export * from './lib/http/httphelper';
 export * from './lib/http/httpdatasource';
+export * from './lib/http/httpdatasourcestate';
 export * from './lib/http/httpfetch.pipe';
 export * from './lib/http/httphelper.module';
 
