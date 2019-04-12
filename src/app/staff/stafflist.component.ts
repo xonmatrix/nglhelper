@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { DialogHelper, HttpHelper, PresistStateMode } from "nglhelper";
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: "./stafflist.component.html"
@@ -19,7 +20,7 @@ export class StaffListComponent implements OnInit {
   moduleRightLevel = 0;
   readOnly = false;
 
-  constructor(private http: HttpHelper, private dialog: DialogHelper) {}
+  constructor(private http: HttpHelper, private dialog: DialogHelper,private router:Router) {}
 
   filterTypes: Array<any> = [
     { Type: "None", Display: "None", Field: "" },
@@ -49,6 +50,9 @@ export class StaffListComponent implements OnInit {
     //  this.ds.SetFilter(this.filterStaffStatus);
   }
 
+  gogo(){
+    this.router.navigateByUrl("/staff/form");
+  }
   rowStyle(context) {
     return {
       "row-inactive": !context.dataItem.IsActive
