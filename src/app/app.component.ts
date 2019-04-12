@@ -14,6 +14,10 @@ export class AppComponent {
   ) {}
 
   async go() {
-   var res = await this.http.Post('/api/test',{});
+    var res = await this.http.Post("/api/account/login",{
+      Username:"sysadmin",
+      Password:"ET569561"
+    });
+    console.log(res);
   }
 }
