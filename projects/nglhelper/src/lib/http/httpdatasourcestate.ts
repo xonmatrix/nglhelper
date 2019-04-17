@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router, ActivationEnd, ResolveEnd } from "@angular/router";
+import { parseJSON } from "../common/parseJSON";
 
 @Injectable({ providedIn: "root" })
 export class HttpDatasourceManager {
@@ -26,23 +27,27 @@ export class HttpDatasourceManager {
     });
   }
 
-  navigateWithFilter(dsName:string,url:string= null,filter:any={},tableFilter:any={}){
-    this.applyFilter(dsName,filter,tableFilter);
+  navigateWithFilter(
+    dsName: string,
+    url: string = null,
+    filter: any = {},
+    tableFilter: any = {}
+  ) {
+    this.applyFilter(dsName, filter, tableFilter);
     this.usePreviousState(url);
   }
 
-  applyFilter(dsName:string,filter:any={},tableFilter:any={}){
-      let state = this.getState(dsName);
-      state.filter = {...filter};
-      state.tableFilter = {...tableFilter};
-      this.setState(dsName,state);
+  applyFilter(dsName: string, filter: any = {}, tableFilter: any = {}) {
+    let state = this.getState(dsName);
+    state.filter = { ...filter };
+    state.tableFilter = { ...tableFilter };
+    this.setState(dsName, state);
   }
 
-  usePreviousState(url :string = null) {
+  usePreviousState(url: string = null) {
     this.loadStateIndicator = true;
     this.shouldReloadState = true;
-    if(url)
-    this.router.navigateByUrl(url);
+    if (url) this.router.navigateByUrl(url);
   }
 
   getState(dsName: string) {
@@ -51,7 +56,7 @@ export class HttpDatasourceManager {
     if (!state) {
       const stateStr = sessionStorage.getItem(stateName);
       if (stateStr != null) {
-        state = JSON.parse(stateStr);
+        state = parseJSON(stateStr);
         this.objectState[stateName] = state;
       }
     }
