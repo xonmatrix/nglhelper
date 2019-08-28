@@ -13,7 +13,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { TableFilterComponent } from "../common/components/tablefilter.component";
-
+import {HttpHelperModule} from 'nglhelper';
 const routes: Routes = [
   { path: "list", component: StaffListComponent },
   { path: "form", component: StaffFormComponent }
@@ -28,7 +28,8 @@ const routes: Routes = [
     DropDownsModule,
     FormsModule,
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    HttpHelperModule
   ],
   declarations: [TableFilterComponent,StaffListComponent, StaffFormComponent]
 })

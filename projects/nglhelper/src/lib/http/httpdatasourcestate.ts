@@ -19,7 +19,6 @@ export class HttpDatasourceManager {
         this.loaded = true;
       } else if (res instanceof ResolveEnd) {
         if (this.loaded) this.shouldReloadState = false;
-
         if (this.loadStateIndicator) this.shouldReloadState = true;
 
         this.loadStateIndicator = false;
@@ -47,7 +46,6 @@ export class HttpDatasourceManager {
   usePreviousState(url: string = null) {
     this.loadStateIndicator = true;
     this.shouldReloadState = true;
-    if (url) this.router.navigateByUrl(url);
   }
 
   getState(dsName: string) {
