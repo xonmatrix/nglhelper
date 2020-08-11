@@ -1,5 +1,5 @@
 import { Component, Inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
     template: `<div style="min-width:350px;border:1px solid transparent" >

@@ -6,11 +6,10 @@ import { DialogsModule } from "@progress/kendo-angular-dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { GridModule } from "@progress/kendo-angular-grid";
 import { DialogHelperModule, LoadingOverlayModule } from "nglhelper"; 
-import {
-  MatRadioModule,
-  MatIconModule,
-  MatButtonModule
-} from "@angular/material";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+
 import "hammerjs";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -20,7 +19,7 @@ import {HttpHelperModule} from 'nglhelper';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/staff/list" },
-  { path:"staff",loadChildren:"./staff/staff.module#StaffModule"}
+  { path:"staff",loadChildren:() => import('./staff/staff.module').then(m => m.StaffModule)}
 ];
 
 @NgModule({

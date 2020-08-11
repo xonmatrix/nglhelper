@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="3px">
     <div fxLayout="row" fxLayoutAlign="start start" *ngFor="let f of filterItems" class="control">
-      <select [(ngModel)]="f.Type" #sel (change)="filterTypeChanged(f,sel.value)" style="width:150px">
-        <option *ngFor="let o of f.FilterTypes" [value]="o.Type">{{o.Display}}</option>
+      <select [(ngModel)]="f.Type" (change)="filterTypeChanged(f)" style="width:150px">
+        <option *ngFor="let o of f.FilterTypes" [ngValue]="o.Type">{{o.Display}}</option>
       </select>
       <input type="text" *ngIf="f?.Field == 'text'" [(ngModel)]="currFilter[f.Type]" style="width:401px;" (change)="filterValueChanged(f)"
       />

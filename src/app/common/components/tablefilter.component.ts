@@ -87,11 +87,14 @@ export class TableFilterComponent {
 
     filterValueChanged() {
         this.filterChange.next(this.currFilter);
+        this.cdr.markForCheck();
     }
 
-    selectFilterType(filter, type) {
-        const f = this.filterTypes.find(a => a.Type === type);
+    selectFilterType(filter) {
+       
+        let f :any= this.filterTypes.find(a => a.Type === filter    .Type);
         if (!f) {
+            f = {};
             f.Type = 'None';
             f.Field = '';
             return;
@@ -150,9 +153,9 @@ export class TableFilterComponent {
 
     }
 
-    filterTypeChanged(filter, type) {
+    filterTypeChanged(filter) {
 
-        this.selectFilterType(filter, type);
+        this.selectFilterType(filter);
 
         // remove filter properties that is not in the lists.
         for (let key in this.currFilter) {

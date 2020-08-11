@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { PopUpDialogComponent } from "./PopUpDialog.component";
 import { Observable } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
