@@ -10,14 +10,15 @@ import {MatButtonModule}  from "@angular/material/button";
 import { RouterModule, Routes } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { TableFilterComponent } from "../common/components/tablefilter.component";
-import {HttpHelperModule} from 'nglhelper';
+
+import {HttpHelperModule,TableFilterModule} from 'nglhelper';
 const routes: Routes = [
   { path: "list", component: StaffListComponent },
   { path: "form", component: StaffFormComponent }
 ];
 @NgModule({
   imports: [
+    TableFilterModule,
     DialogsModule,
     GridModule,
     MatRadioModule,
@@ -29,6 +30,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpHelperModule
   ],
-  declarations: [TableFilterComponent,StaffListComponent, StaffFormComponent]
+  declarations: [StaffListComponent, StaffFormComponent]
 })
 export class StaffModule {}

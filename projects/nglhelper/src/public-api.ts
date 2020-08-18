@@ -17,10 +17,12 @@ export * from "./lib/http/routerlinkds.directive";
 export * from "./lib/dialog/dialoghelper";
 export * from "./lib/dialog/dialoghelper.module";
 export * from "./lib/dialog/debugwindow.component";
-export * from "./lib/dialog/popupdialog.component";
+
 
 // Overlay
 export * from "./lib/loadingoverlay/loadingoverlay.module";
 export * from "./lib/loadingoverlay/loadingoverlay.component";
 
-
+//table filter
+export * from "./lib/tablefilter/tablefilter.component";
+export * from "./lib/tablefilter/tablefilter.module";

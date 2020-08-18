@@ -48,6 +48,7 @@ export class StaffListComponent implements OnInit {
 
   ngOnInit() {
     //  this.ds.SetFilter(this.filterStaffStatus);
+    
   }
 
   gogo(){

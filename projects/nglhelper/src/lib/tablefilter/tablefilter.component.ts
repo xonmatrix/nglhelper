@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectorRef, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
-import { HttpHelper } from 'nglhelper';
+import { HttpHelper } from '../http/httphelper';
 
 @Component({
     selector: 'table-filter',

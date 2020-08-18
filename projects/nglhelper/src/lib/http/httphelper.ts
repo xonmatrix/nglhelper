@@ -5,7 +5,7 @@ import {
   HttpResponse,
   HttpErrorResponse
 } from "@angular/common/http";
-import { forkJoin, Subject, throwError, Observable, timer } from "rxjs";
+import { forkJoin, Subject, throwError, timer } from "rxjs";
 import {
   map,
   finalize,

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Input, ChangeDetectionStrategy } from '@a
 import { trigger, transition, style, animate, query, group } from '@angular/animations';
 
 @Component({
-    template: `<kendo-dialog class="loadingDialog" @fadeInAnimation [width]="'180px'" *ngIf="_show" >
+    template: `<kendo-dialog class="loadingDialog" @fadeInAnimation  *ngIf="_show" >
                     <div style='padding:0px 15px;flex-direction:row;display:flex;align-items:center;align-content:center;width:230px'>
                         <div style="font-family: 'Oswald', font-size:18px;margin-left:40px">Fetching Data</div>
                         <img src="assets/images/loading.gif" style="height:60px;margin-left:20px" />

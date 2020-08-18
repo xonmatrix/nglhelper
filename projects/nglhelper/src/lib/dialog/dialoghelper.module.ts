@@ -11,6 +11,6 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     imports: [CommonModule, MatButtonModule, MatDialogModule, MatIconModule, DialogsModule],
     declarations: [PopUpDialogComponent, DebugWindowComponent, DebugContentComponent],
     entryComponents: [PopUpDialogComponent],
-    exports: [PopUpDialogComponent, DebugWindowComponent]
+    exports: [ DebugWindowComponent]
 })
 export class DialogHelperModule { }

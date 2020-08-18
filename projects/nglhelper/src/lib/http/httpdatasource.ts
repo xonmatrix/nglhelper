@@ -57,7 +57,7 @@ export class HttpDataSource {
           this.dsManager.ShouldReloadDsState))
     ) {
       state = this.dsManager.getState(options.presistState);
-    
+     
       if (state) {
         this.Limit = state.Limit;
         this.OffSet = state.Offset;
