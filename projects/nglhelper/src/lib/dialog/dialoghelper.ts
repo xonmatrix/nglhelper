@@ -173,7 +173,7 @@ export class DialogHelper {
     });
   }
 
-  ToastWithTimeOut(condition: string, message: string, title: string = "Success", timeout = 2000, overlay = true) {
+  ToastWithTimeOut(condition = "Success", message: string, title: string = "Success", timeout = 2000, overlay = true) {
 
     this.zone.runOutsideAngular(() => {
       const opts: any = Object.assign(
