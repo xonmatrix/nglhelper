@@ -173,6 +173,33 @@ export class DialogHelper {
     });
   }
 
+  ToastWithTimeOut(condition: string, message: string, title: string = "Success", timeout = 2000, overlay = true) {
+
+    this.zone.runOutsideAngular(() => {
+      const opts: any = Object.assign(
+        {
+          message: message,
+          title: title,
+          iconText: (condition == "Success") ? "done_all" :"warning",
+          iconColor: (condition == "Success") ? "#4CAF50" : "#FFEB3B",
+          messageColor: (condition == "Success") ? "#FFF8E1" : "#FFEB3B",
+          progressBarColor: (condition == "Success") ? "rgb(0, 255, 184)" : "rgb(255, 235, 59)",
+          backgroundColor: "rgba(40, 40, 40, .9)",
+          overlay: overlay,
+          timeout:timeout
+        },
+        this.toastOpts
+      );
+
+      if (timeout <= 0) {
+        opts.close = true;
+        opts.progressBar = false;
+      }
+
+      iziToast.show(opts);
+    });
+  }
+
   Confirm(message: string, title: string = "Confirmation"): Promise<boolean> {
     return this.dialog
       .open(PopUpDialogComponent, {
