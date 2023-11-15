@@ -1,0 +1,52 @@
+<div class="table-filter-wrapper">
+  <div *ngFor="let f of filterItems" class="control">
+    <select
+      [(ngModel)]="f.Type"
+      (change)="filterTypeChanged(f)"
+      style="width: 150px"
+    >
+      <option *ngFor="let o of f.FilterTypes" [ngValue]="o.Type">
+        {{ o.Display }}
+      </option>
+    </select>
+    <input
+      type="text"
+      *ngIf="f?.Field == 'text'"
+      [(ngModel)]="currFilter[f.Type]"
+      style="width: 401px"
+      (change)="filterValueChanged()"
+    />
+    <kendo-multiselect
+      *ngIf="f?.Field == 'multi'"
+      [data]="f?.Source"
+      textField="Name"
+      valueField="Id"
+      [valuePrimitive]="true"
+      [(ngModel)]="currFilter[f.Type]"
+      style="width: 400px"
+      (valueChange)="filterValueChanged()"
+    ></kendo-multiselect>
+    <kendo-dropdownlist
+      *ngIf="f?.Field == 'dropdown'"
+      [data]="f?.Source"
+      textField="Name"
+      valueField="Id"
+      [(ngModel)]="currFilter[f.Type]"
+      [valuePrimitive]="true"
+      style="width: 400px"
+      (valueChange)="filterValueChanged()"
+    ></kendo-dropdownlist>
+    <kendo-dropdownlist
+      *ngIf="f?.Field == 'lookup'"
+      [data]="f?.Source"
+      textField="Name"
+      valueField="Id"
+      [(ngModel)]="currFilter[f.Type]"
+      [valuePrimitive]="true"
+      style="width: 400px"
+      (valueChange)="filterValueChanged()"
+      [filterable]="true"
+      (filterChange)="filterLookup(f, $event)"
+    ></kendo-dropdownlist>
+  </div>
+</div>

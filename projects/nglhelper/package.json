@@ -1,0 +1,17 @@
+{
+  "name": "nglhelper",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^16.2.0",
+    "@angular/core": "^16.2.0",
+    "@angular/material": "^16.2.0",
+    "@progress/kendo-angular-dialog": "^13.5.0",
+    "@progress/kendo-angular-dropdowns": "^13.5.0",
+    "date-fns": "^2.30.0",
+    "izitoast": "^1.4.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
